@@ -88,7 +88,7 @@ export default function ContactSection() {
               animate={inView ? { y: "0%" } : {}}
               transition={{ duration: 1, delay: 0.28, ease: E }}
             >
-              CONNECT.
+              CONNECT
             </motion.span>
           </div>
         </div>

@@ -31,7 +31,7 @@
   white-space: nowrap;
   opacity: 0;
   display: inline-block;
-  will-change: opacity, transform, color;
+  will-change: opacity;
 }
 
 @media (max-width: 1440px) {
