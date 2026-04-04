@@ -1,0 +1,76 @@
+.name {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 8.4vw, 8rem);
+  letter-spacing: 0.2em;
+  color: #b8a88a;
+  white-space: nowrap;
+  z-index: 5;
+  will-change: color, opacity, transform;
+}
+
+@media (max-width: 1440px) {
+  .name {
+    font-size: clamp(1.4rem, 7.5vw, 7rem);
+    bottom: -1rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .name {
+    font-size: clamp(1.4rem, 7vw, 6rem);
+    letter-spacing: 0.18em;
+    bottom: -0.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .name {
+    font-size: clamp(1.4rem, 6.5vw, 5rem);
+    letter-spacing: 0.16em;
+    bottom: 0rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: clamp(1.3rem, 6vw, 3.5rem);
+    letter-spacing: 0.14em;
+    bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: clamp(1.2rem, 7vw, 2.5rem);
+    letter-spacing: 0.12em;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .name {
+    font-size: clamp(1.1rem, 6.8vw, 2.2rem);
+    letter-spacing: 0.1em;
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .name {
+    font-size: clamp(1rem, 6.5vw, 2rem);
+    letter-spacing: 0.08em;
+    bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .name {
+    font-size: clamp(0.9rem, 6.2vw, 1.8rem);
+    letter-spacing: 0.06em;
+    bottom: 1.5rem;
+  }
+}

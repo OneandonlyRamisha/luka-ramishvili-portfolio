@@ -1,0 +1,29 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Canvas fills its container at all sizes via inset:0.
+   Pixel ratio is handled in ParticleSphere.tsx via
+   Math.min(window.devicePixelRatio, 2).
+   On smaller screens, reduce pixel ratio for performance. */
+
+@media (max-width: 768px) {
+  .canvas {
+    /* Hint for Three.js — handled in JS but keeps CSS explicit */
+    contain: strict;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas {
+    contain: strict;
+  }
+}

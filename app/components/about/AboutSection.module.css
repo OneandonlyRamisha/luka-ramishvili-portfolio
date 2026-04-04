@@ -1,0 +1,767 @@
+/* ══════════════════════════════════════════════
+   SECTION
+══════════════════════════════════════════════ */
+.section {
+  background: var(--color-dark);
+  padding: 0 0 4rem;
+  position: relative;
+}
+
+/* ══════════════════════════════════════════════
+   INTRO — full-width, matches other sections
+══════════════════════════════════════════════ */
+.intro {
+  padding: 6rem 4rem 0;
+  box-sizing: border-box;
+}
+
+/* ── Marker row: 02 / ABOUT ─────────────────── */
+.markerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.markerNum {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-1);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.markerSlash {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  color: rgba(212, 175, 55, 0.22);
+  flex-shrink: 0;
+}
+
+.markerLabel {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.38em;
+  color: rgba(245, 245, 240, 0.35);
+  flex-shrink: 0;
+}
+
+.markerRuleLine {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0.35) 0%,
+    transparent 100%
+  );
+  will-change: transform;
+}
+
+.bioWrap {
+  margin-top: 3.5rem;
+  padding-bottom: 1rem;
+}
+
+/* ══════════════════════════════════════════════
+   TIMELINE — full-width, no centering
+══════════════════════════════════════════════ */
+.timeline {
+  position: relative;
+  padding: 2rem 4rem 6rem;
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════
+   VERTICAL PROGRESS LINE
+══════════════════════════════════════════════ */
+.lineContainer {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-0.5px);
+  width: 1px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lineTrack {
+  position: absolute;
+  inset: 0;
+  background: rgba(212, 175, 55, 0.06);
+}
+
+.lineFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #d4af37 0%,
+    #b8972e 55%,
+    rgba(184, 151, 46, 0.2) 100%
+  );
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════════════
+   ROW — 3-col full-width grid
+══════════════════════════════════════════════ */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  align-items: center;
+  min-height: 420px;
+  padding: 3rem 0;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(212, 175, 55, 0.09);
+}
+
+.rowFinal {
+  min-height: 480px;
+}
+
+/* ══════════════════════════════════════════════
+   ZONES — full-width, no max-width constraint
+══════════════════════════════════════════════ */
+.leftZone {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 4rem;
+  z-index: 1;
+  min-width: 0;
+}
+
+.rightZone {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 4rem;
+  z-index: 1;
+  min-width: 0;
+}
+
+/* ══════════════════════════════════════════════
+   LARGE YEAR DISPLAY
+══════════════════════════════════════════════ */
+.yearDisplay {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 11vw, 16rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 55, 0.14);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  will-change: opacity;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════
+   NODE
+══════════════════════════════════════════════ */
+.nodeZone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.rowLeft .nodeZone::before,
+.rowRight .nodeZone::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(50% + 4rem);
+  height: 1px;
+}
+
+.rowLeft .nodeZone::before {
+  right: 50%;
+  background: linear-gradient(to left, rgba(212, 175, 55, 0.28), transparent);
+}
+
+.rowRight .nodeZone::after {
+  left: 50%;
+  background: linear-gradient(to right, rgba(212, 175, 55, 0.28), transparent);
+}
+
+.node {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  will-change: opacity, transform;
+}
+
+.node::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nodeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4af37;
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.9),
+    0 0 20px rgba(212, 175, 55, 0.5),
+    0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.nodePulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  animation: pulseRing 2.8s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(2.8); opacity: 0;   }
+}
+
+/* ══════════════════════════════════════════════
+   TEXT BLOCK
+══════════════════════════════════════════════ */
+.textBlock {
+  z-index: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.alignRight { text-align: right; }
+.alignLeft  { text-align: left;  }
+
+/* — Metadata: counter + year — */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  will-change: opacity, transform;
+}
+
+.alignRight .meta {
+  justify-content: flex-end;
+}
+
+.num {
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.45em;
+  color: rgba(212, 175, 55, 0.7);
+}
+
+.slash {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.year {
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 0.45em;
+  color: #d4af37;
+}
+
+/* — Title clip wrapper — */
+.titleWrap {
+  overflow: hidden;
+}
+
+/* — Title — */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 7.5rem);
+  letter-spacing: 0.03em;
+  color: var(--color-warm-white);
+  font-weight: 400;
+  line-height: 0.95;
+  will-change: opacity, transform, clip-path;
+  display: block;
+}
+
+/* Final milestone — climactic, oversized */
+.textFinal .title {
+  font-size: clamp(3.5rem, 8.5vw, 12rem);
+}
+
+/* — Gold rule — */
+.rule {
+  height: 1px;
+  margin: 1.3rem 0;
+  background: linear-gradient(
+    to right,
+    rgba(212, 175, 55, 0.6),
+    rgba(212, 175, 55, 0.08)
+  );
+  will-change: transform;
+}
+
+.alignRight .rule {
+  background: linear-gradient(
+    to left,
+    rgba(212, 175, 55, 0.6),
+    rgba(212, 175, 55, 0.08)
+  );
+}
+
+/* — Description — */
+.desc {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.15vw, 1.2rem);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.03em;
+  color: rgba(245, 245, 240, 0.52);
+  will-change: opacity, transform;
+  max-width: 44ch;
+}
+
+.alignRight .desc {
+  margin-left: auto;
+}
+
+.textFinal .desc {
+  color: rgba(245, 245, 240, 0.62);
+  font-size: clamp(1.05rem, 1.25vw, 1.28rem);
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+
+@media (max-width: 1440px) {
+  .intro {
+    padding: 5.5rem 3.5rem 0;
+  }
+
+  .timeline {
+    padding: 2rem 3.5rem 5.5rem;
+  }
+
+  .leftZone  { padding-right: 3.5rem; }
+  .rightZone { padding-left:  3.5rem; }
+
+  .rowLeft .nodeZone::before,
+  .rowRight .nodeZone::after {
+    width: calc(50% + 3.5rem);
+  }
+
+  .yearDisplay {
+    font-size: clamp(4rem, 10.5vw, 14rem);
+  }
+}
+
+@media (max-width: 1280px) {
+  .intro {
+    padding: 5.5rem 3rem 0;
+  }
+
+  .timeline {
+    padding: 2rem 3rem 5rem;
+  }
+
+  .leftZone  { padding-right: 3rem; }
+  .rightZone { padding-left:  3rem; }
+
+  .rowLeft .nodeZone::before,
+  .rowRight .nodeZone::after {
+    width: calc(50% + 3rem);
+  }
+
+  .title {
+    font-size: clamp(2.4rem, 5vw, 6rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(3rem, 8vw, 10rem);
+  }
+
+  .yearDisplay {
+    font-size: clamp(4rem, 10vw, 13rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .intro {
+    padding: 5rem 2.5rem 0;
+  }
+
+  .timeline {
+    padding: 1.5rem 2.5rem 4.5rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr 60px 1fr;
+    min-height: 360px;
+    padding: 2.5rem 0;
+  }
+
+  .leftZone  { padding-right: 2.5rem; }
+  .rightZone { padding-left:  2.5rem; }
+
+  .rowLeft .nodeZone::before,
+  .rowRight .nodeZone::after {
+    width: calc(50% + 2.5rem);
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 4.8vw, 5rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(2.8rem, 7.5vw, 8rem);
+  }
+
+  .yearDisplay {
+    font-size: clamp(3.5rem, 9vw, 10rem);
+  }
+
+  .desc {
+    font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    line-height: 1.9;
+    max-width: 38ch;
+  }
+
+  .rule {
+    margin: 1rem 0;
+  }
+
+  .bioWrap {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro {
+    padding: 4.5rem 2rem 0;
+  }
+
+  .timeline {
+    padding: 1.5rem 2rem 4rem;
+  }
+
+  .row {
+    grid-template-columns: 1fr 56px 1fr;
+    min-height: 300px;
+    padding: 2rem 0;
+  }
+
+  .leftZone  { padding-right: 2rem; }
+  .rightZone { padding-left:  2rem; }
+
+  .rowLeft .nodeZone::before,
+  .rowRight .nodeZone::after {
+    width: calc(50% + 2rem);
+  }
+
+  .title {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(2.5rem, 7vw, 6rem);
+  }
+
+  .yearDisplay {
+    font-size: clamp(3rem, 9vw, 8rem);
+  }
+
+  .desc {
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    line-height: 1.85;
+    max-width: 34ch;
+  }
+
+  .bioWrap {
+    margin-top: 2.5rem;
+  }
+
+  .node {
+    width: 28px;
+    height: 28px;
+  }
+
+  .nodeDot {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+/* ── Mobile: collapse to single column ── */
+
+@media (max-width: 480px) {
+  .intro {
+    padding: 4rem 1.25rem 0;
+  }
+
+  .bioWrap {
+    margin-top: 2.5rem;
+  }
+
+  .timeline {
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  .row {
+    grid-template-columns: 44px 1fr;
+    min-height: unset;
+    padding: 2.5rem 0;
+    align-items: flex-start;
+    border-top: 1px solid rgba(212, 175, 55, 0.09);
+  }
+
+  .nodeZone {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 0.4rem;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .leftZone,
+  .rightZone {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 0 0 1.25rem;
+  }
+
+  .yearDisplay {
+    display: none;
+  }
+
+  .lineContainer {
+    left: calc(1.25rem + 22px);
+  }
+
+  .alignRight,
+  .alignLeft {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .alignRight .meta {
+    justify-content: flex-start;
+  }
+
+  .alignRight .rule {
+    background: linear-gradient(
+      to right,
+      rgba(212, 175, 55, 0.6),
+      rgba(212, 175, 55, 0.08)
+    );
+    margin-left: 0;
+  }
+
+  .alignRight .desc {
+    margin-left: 0;
+  }
+
+  .desc {
+    max-width: 100%;
+    font-size: 0.9rem;
+    line-height: 1.85;
+  }
+
+  .rowLeft .nodeZone::before,
+  .rowRight .nodeZone::after {
+    display: none;
+  }
+
+  .title {
+    font-size: clamp(1.8rem, 6.5vw, 2.6rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+  }
+
+  .node {
+    width: 26px;
+    height: 26px;
+  }
+
+  .nodeDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .rule {
+    margin: 0.9rem 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .intro {
+    padding: 3.5rem 1.1rem 0;
+  }
+
+  .timeline {
+    padding: 1rem 1.1rem 2.5rem;
+  }
+
+  .row {
+    grid-template-columns: 38px 1fr;
+    padding: 2rem 0;
+  }
+
+  .leftZone,
+  .rightZone {
+    padding: 0 0 0 1rem;
+  }
+
+  .lineContainer {
+    left: calc(1.1rem + 19px);
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(2rem, 7.5vw, 3rem);
+  }
+
+  .desc {
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .meta {
+    margin-bottom: 0.8rem;
+  }
+
+  .num, .year {
+    font-size: 0.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .intro {
+    padding: 3rem 1rem 0;
+  }
+
+  .timeline {
+    padding: 0.75rem 1rem 2rem;
+  }
+
+  .row {
+    grid-template-columns: 34px 1fr;
+    padding: 1.8rem 0;
+  }
+
+  .leftZone,
+  .rightZone {
+    padding: 0 0 0 0.85rem;
+  }
+
+  .lineContainer {
+    left: calc(1rem + 17px);
+  }
+
+  .title {
+    font-size: clamp(1.4rem, 5.8vw, 2.2rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+  }
+
+  .desc {
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .node {
+    width: 22px;
+    height: 22px;
+  }
+
+  .nodeDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .rule {
+    margin: 0.75rem 0;
+  }
+
+  .bioWrap {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .intro {
+    padding: 2.5rem 0.85rem 0;
+  }
+
+  .timeline {
+    padding: 0.5rem 0.85rem 1.5rem;
+  }
+
+  .row {
+    grid-template-columns: 30px 1fr;
+    padding: 1.5rem 0;
+  }
+
+  .leftZone,
+  .rightZone {
+    padding: 0 0 0 0.75rem;
+  }
+
+  .lineContainer {
+    left: calc(0.85rem + 15px);
+  }
+
+  .title {
+    font-size: clamp(1.3rem, 5.5vw, 2rem);
+  }
+
+  .textFinal .title {
+    font-size: clamp(1.6rem, 6.5vw, 2.5rem);
+  }
+
+  .desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
+
+  .markerNum, .markerSlash, .markerLabel {
+    font-size: 0.55rem;
+  }
+
+  .node {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nodeDot {
+    width: 4px;
+    height: 4px;
+  }
+}

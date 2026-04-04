@@ -1,0 +1,298 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem 3rem;
+  font-family: var(--font-display);
+  color: #0a0a0a;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition:
+    background-color 0.4s ease,
+    border-bottom-color 0.4s ease,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+}
+
+/* ── Hidden during portfolio scroll (global class toggled by PortfolioSection) ── */
+:global(.nav-hidden).nav {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.logo:hover .logoMark {
+  letter-spacing: 0.35em;
+}
+
+.logo:hover .logoFull {
+  opacity: 0.6;
+}
+
+.logoMark {
+  font-size: 1.25rem;
+  letter-spacing: 0.25em;
+  transition: letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logoDivider {
+  display: block;
+  width: 1px;
+  height: 1.25rem;
+  background: rgba(212, 175, 55, 0.35);
+  flex-shrink: 0;
+}
+
+.logoFull {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  color: rgba(212, 175, 55, 0.7);
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+/* ── Links ────────────────────────────────────────────── */
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2.75rem;
+}
+
+.link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  padding-bottom: 0.18rem;
+  cursor: pointer;
+}
+
+.linkNum {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--color-gold-1);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.linkLabel {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  transition: letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.linkUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-gold-1);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover state */
+.link:hover .linkLabel {
+  letter-spacing: 0.28em;
+}
+
+.link:hover .linkUnderline {
+  width: 100%;
+}
+
+.link:hover .linkNum {
+  opacity: 0.85;
+}
+
+/* Active state */
+.linkActive .linkUnderline {
+  width: 100%;
+}
+
+.linkActive .linkNum {
+  opacity: 1;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 1440px) {
+  .nav {
+    padding: 1.6rem 2.8rem;
+  }
+
+  .links {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .nav {
+    padding: 1.5rem 2.5rem;
+  }
+
+  .links {
+    gap: 2.25rem;
+  }
+
+  .linkLabel {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 1.4rem 2rem;
+  }
+
+  .links {
+    gap: 2rem;
+  }
+
+  .linkLabel {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+  }
+
+  .linkNum {
+    font-size: 0.55rem;
+  }
+
+  .logoFull {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 1.4rem 1.5rem;
+  }
+
+  .logoFull {
+    display: none;
+  }
+
+  .logoDivider {
+    display: none;
+  }
+
+  .links {
+    gap: 1.75rem;
+  }
+
+  .linkNum {
+    display: none;
+  }
+
+  .linkLabel {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+
+  .logoMark {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 1.2rem 1.15rem;
+  }
+
+  .links {
+    gap: 1.1rem;
+  }
+
+  .linkLabel {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+  }
+
+  .logoMark {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (max-width: 425px) {
+  .nav {
+    padding: 1.1rem 1rem;
+  }
+
+  .links {
+    gap: 0.9rem;
+  }
+
+  .linkLabel {
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+  }
+
+  .logoMark {
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav {
+    padding: 1rem 0.85rem;
+  }
+
+  .links {
+    gap: 0.7rem;
+  }
+
+  .linkLabel {
+    font-size: 0.48rem;
+    letter-spacing: 0.08em;
+  }
+
+  .logoMark {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 350px) {
+  .nav {
+    padding: 0.9rem 0.75rem;
+  }
+
+  .links {
+    gap: 0.55rem;
+  }
+
+  .linkLabel {
+    font-size: 0.44rem;
+    letter-spacing: 0.06em;
+  }
+
+  .logoMark {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+  }
+}

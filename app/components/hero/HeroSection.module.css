@@ -1,0 +1,33 @@
+.outer {
+  height: 250vh;
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Hero container is naturally responsive (100vh/100vw) via sticky.
+   Adjust outer scroll-space on small screens for better pacing. */
+
+@media (max-width: 768px) {
+  .outer {
+    height: 220vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .outer {
+    height: 200vh;
+  }
+}
+
+@media (max-width: 375px) {
+  .outer {
+    height: 180vh;
+  }
+}
