@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import styles from "./ContactSection.module.css";
 
@@ -39,10 +39,16 @@ const SOCIALS = [
 const MARQUEE = "GET IN TOUCH · LET'S CONNECT · ";
 const E = [0.16, 1, 0.3, 1] as const;
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  onReady?: () => void;
+}
+
+export default function ContactSection({ onReady }: ContactSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-15% 0px" });
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => { onReady?.(); }, [onReady]);
 
   const handleCopy = async () => {
     try {

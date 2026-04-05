@@ -50,9 +50,15 @@ const PROJECTS = [
 
 const CIRCUMFERENCE = 2 * Math.PI * 24;
 
-export default function PortfolioSection() {
+interface PortfolioSectionProps {
+  onReady?: () => void;
+}
+
+export default function PortfolioSection({ onReady }: PortfolioSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const progressRef = useRef(0);
+
+  useEffect(() => { onReady?.(); }, [onReady]);
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
   const currentFloatRef = useRef(0);
   const rafRef = useRef(0);

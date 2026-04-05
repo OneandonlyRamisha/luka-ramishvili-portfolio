@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useScroll, useInView } from "framer-motion";
 import styles from "./AboutSection.module.css";
 import AboutText from "./AboutText";
@@ -105,9 +105,15 @@ const TITLE_ANIMS = [
 
 const E = [0.16, 1, 0.3, 1] as const;
 
-export default function AboutSection() {
+interface AboutSectionProps {
+  onReady?: () => void;
+}
+
+export default function AboutSection({ onReady }: AboutSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { onReady?.(); }, [onReady]);
   const introInView = useInView(introRef, { once: true, margin: "-10% 0px" });
 
   const { scrollYProgress } = useScroll({

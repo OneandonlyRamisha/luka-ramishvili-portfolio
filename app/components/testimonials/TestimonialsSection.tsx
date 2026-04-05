@@ -34,9 +34,15 @@ const TESTIMONIALS = [
   },
 ] as const;
 
-export default function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  onReady?: () => void;
+}
+
+export default function TestimonialsSection({ onReady }: TestimonialsSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { onReady?.(); }, [onReady]);
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);

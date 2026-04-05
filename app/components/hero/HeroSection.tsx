@@ -12,9 +12,15 @@ import styles from "./HeroSection.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onReady?: () => void;
+}
+
+export default function HeroSection({ onReady }: HeroSectionProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => { onReady?.(); }, [onReady]);
 
   const handleProgress = useCallback((p: number) => {
     setScrollProgress(p);

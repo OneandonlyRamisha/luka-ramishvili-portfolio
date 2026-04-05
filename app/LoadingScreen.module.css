@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0A0A0A;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.8s;
+}
+
+.exit {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  letter-spacing: 0.35em;
+  color: #F5F5F0;
+}
+
+.barTrack {
+  width: clamp(160px, 30vw, 280px);
+  height: 1px;
+  background: rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+}
+
+.barFill {
+  width: 100%;
+  height: 100%;
+  background: #D4AF37;
+  transform-origin: left center;
+  transition: transform 0.1s linear;
+}
+
+.percent {
+  font-family: var(--font-display);
+  font-size: clamp(0.5rem, 1.2vw, 0.6rem);
+  letter-spacing: 0.3em;
+  color: rgba(212, 175, 55, 0.5);
+}
