@@ -22,10 +22,12 @@ export default function PortfolioParticles() {
     );
     camera.position.z = 10;
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: false,
-      alpha: true,
-    });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+    } catch {
+      return; // WebGL not available — fail silently
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(el.clientWidth, el.clientHeight);
     renderer.setClearColor(0x000000, 0);

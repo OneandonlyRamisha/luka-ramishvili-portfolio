@@ -1,6 +1,11 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import ErrorBoundary from "./ErrorBoundary";
+
+const SectionSkeleton = () => (
+  <div style={{ minHeight: "100vh", background: "var(--color-dark)" }} />
+);
 
 const HeroSection = dynamic(
   () => import("./components/hero/HeroSection"),
@@ -14,27 +19,27 @@ const HeroSection = dynamic(
 
 const AboutSection = dynamic(
   () => import("./components/about/AboutSection"),
-  { ssr: false }
+  { ssr: false, loading: SectionSkeleton }
 );
 
 const PortfolioSection = dynamic(
   () => import("./components/portfolio/PortfolioSection"),
-  { ssr: false }
+  { ssr: false, loading: SectionSkeleton }
 );
 
 const TestimonialsSection = dynamic(
   () => import("./components/testimonials/TestimonialsSection"),
-  { ssr: false }
+  { ssr: false, loading: SectionSkeleton }
 );
 
 const ContactSection = dynamic(
   () => import("./components/contact/ContactSection"),
-  { ssr: false }
+  { ssr: false, loading: SectionSkeleton }
 );
 
 export default function ClientPage() {
   return (
-    <>
+    <ErrorBoundary>
       <main>
         <HeroSection />
         <AboutSection />
@@ -71,6 +76,6 @@ export default function ClientPage() {
           ALL RIGHTS RESERVED
         </span>
       </footer>
-    </>
+    </ErrorBoundary>
   );
 }
